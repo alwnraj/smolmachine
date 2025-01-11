@@ -6,17 +6,91 @@
     <title>Image Classifier</title>
     <script src="https://unpkg.com/ml5@0.12.2/dist/ml5.min.js"></script>
 </head>
+
 <style>
-    #imageContainer {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-    }
-    #imageContainer img {
+    body {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+        font-family: system-ui, -apple-system, sans-serif;
+        background: #f7f7f7;
+      }
+      
+      h1 {
+        color: #2563eb;
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+      }
+      
+      #imageContainer {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 1rem;
+        margin: 2rem 0;
+        padding: 1rem;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      }
+      
+      #imageContainer img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 4px;
+        transition: transform 0.2s;
+      }
+      
+      #imageContainer img:hover {
+        transform: scale(1.05);
+      }
+      
+      input[type="file"] {
+        background: white;
+        padding: 1rem;
+        border-radius: 4px;
+        border: 2px dashed #e5e7eb;
+        width: 100%;
+        margin-bottom: 1rem;
+      }
+      
+      input[type="text"] {
+        padding: 0.5rem 1rem;
+        border: 1px solid #e5e7eb;
+        border-radius: 4px;
+        margin-right: 1rem;
         width: 200px;
-        height: auto;
-    }
+      }
+      
+      button {
+        background: #2563eb;
+        color: white;
+        padding: 0.5rem 1.5rem;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-right: 0.5rem;
+        transition: background 0.2s;
+      }
+      
+      button:hover {
+        background: #1d4ed8;
+      }
+      
+      button:disabled {
+        background: #9ca3af;
+        cursor: not-allowed;
+      }
+      
+      #message {
+        margin: 1rem 0;
+        padding: 1rem;
+        background: #f3f4f6;
+        border-radius: 4px;
+        color: #4b5563;
+      }
 </style>
+
 <body>
     <h1>Smolmachine</h1>
     <input type="file" id="fileInput" multiple accept="image/*" />
